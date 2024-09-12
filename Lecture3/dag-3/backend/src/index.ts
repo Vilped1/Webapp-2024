@@ -7,9 +7,7 @@ import { Weather } from "./type";
 const app = new Hono();
 
 app.use(
-  cors({
-    origin: "*",
-  })
+  cors({origin: "*",})
 );
 
 app.get("/", async (c) => {
@@ -27,6 +25,7 @@ app.get("/:place", async (c) => {
   if (!existing) return c.json({error: "Place not found"}, 404)
   return c.json({data: existing, param: reqPlace});
 });
+///
 
 app.post("/", async (c) => {
   const body = await c.req.json<Weather>()
@@ -60,3 +59,5 @@ serve({
   fetch: app.fetch,
   port,
 });
+
+// npm create vite@latest . -- --template vanilla
