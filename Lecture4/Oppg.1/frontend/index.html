@@ -49,7 +49,7 @@
         const addJokeForm = document.getElementById('addJokeFormId');
 
         function displayJokes(jokes) {
-            jokesList.innerHTML = jokes.map(joke => `
+            jokesList.innerHTML = jokes?.map(joke => `
                 <article class="joke">
                     <h3>${joke.title}</h3>
                     <p>${joke.answer}</p>
@@ -60,8 +60,9 @@
         async function fetchJokes() {
             // Fetch data fra server og legg det til i listen over
             const dataFromServer = []
-            if(!dataFromServer.length) return
-            return [...dadjokes, ...dataFromServer];
+            if(!dataFromServer?.length) return
+            console.log(dataFromServer)
+            return [...dadJokes, ...dataFromServer];
         }
 
         // Function to post a new joke (simulated)
@@ -69,7 +70,7 @@
             console.log('Posting new joke:', joke);
             // Send data til server og legg til i listen under
             const createdJoke = {}
-            dadJokes.push(createdJoke);
+            dadJokes?.push(createdJoke);
             displayJokes(dadJokes);
         }
 
@@ -78,7 +79,7 @@
             const title = document.getElementById('jokeTitle').value;
             const answer = document.getElementById('jokeAnswer').value;
             await postJoke({ title, answer });
-            addJokeForm.reset();
+            addJokeForm?.reset();
         });
 
         (async () => {
