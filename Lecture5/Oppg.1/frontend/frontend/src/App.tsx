@@ -20,7 +20,7 @@ function App() {
     <main>
       <Grid students={students} />
     </main>
-  )
+  ) 
 }
 
 export default App;

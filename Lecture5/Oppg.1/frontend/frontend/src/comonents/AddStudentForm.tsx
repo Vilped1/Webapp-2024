@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 type AddStudentFormProps = {
-    onAddStudent: (name: string) => void
+    onAddStudent: ({ name }: { name: string }) => void;
 }
 
 export default function AddStudentForm(props: AddStudentFormProps) {
@@ -11,7 +11,7 @@ export default function AddStudentForm(props: AddStudentFormProps) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if(!name) return
-        onAddStudent(name)
+        onAddStudent({name})
         setName("")
     }
 
