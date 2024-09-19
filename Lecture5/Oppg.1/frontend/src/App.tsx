@@ -15,7 +15,6 @@ const students = [
   }
 ]
 
-
 function App() {
   return(
     <main>

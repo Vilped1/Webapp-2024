@@ -1,8 +1,26 @@
-export default function AddStudentForm() {
+import { useState } from "react"
+
+type AddStudentFormProps = {
+    onAddStudent: (name: string) => void
+}
+
+export default function AddStudentForm(props: AddStudentFormProps) {
+    const {onAddStudent} = props
+    const [name, setName] = useState("")
+    
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        if(!name) return
+        onAddStudent(name)
+        setName("")
+    }
+
     return(
         <section>
-            <form action="">
-                <input type="text" />
+            <form onSubmit={handleSubmit} className="addStudent">
+                <label htmlFor="name">Navn</label>
+                <input type="text" id="name" placeholder="Studentens navn" value={name} onChange={(e) => setName(e.target.value)} />
+                <button type="submit">Legg til</button>
             </form>
         </section>
     )
