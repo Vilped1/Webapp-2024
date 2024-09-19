@@ -1,11 +1,6 @@
 import Avatar from "./Avatar"
 import { StudentProps } from "./Types"
 
-// type StudentProps = {
-//     id: string
-//     name: string
-// }
-
 export default function Student(props: StudentProps) {
     const {id, name} = props
     return (
