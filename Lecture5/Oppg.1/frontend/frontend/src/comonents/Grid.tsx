@@ -1,28 +1,30 @@
-import { useState } from "react"
+// import { PropsWithChildren } from "react";
 import Student from "./Student"
 import { StudentProps } from "./Types"
-import AddStudentForm from "./AddStudentForm"
+// import AddStudentForm from "./AddStudentForm"
 
 type GridProps = {
-    students: StudentProps[]
+    children: React.ReactNode;
+    student: StudentProps[]
+    onRemoveStudent: (id: string) => void;
+    // handleFilterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-export default function Grid(props: GridProps) {
-    // const {id, name} = props
-    const [student, setStudent] = useState<StudentProps[]>(props.students ?? [])
+export default function Grid({ children, student, onRemoveStudent }: GridProps) {
+    // export default function Grid(props: PropsWithChildren) {
+    //     const{childen} = props
 
-    const onAddStudent = (student: {name: string}) => {
-        setStudent((prev) => [...prev, {id: crypto.randomUUID(), ...student}])
-    }
+    console.log("Studenter", student)
 
-    return(
+    return (
         <section>
             <article className="grid">
-                {student?.map(stud => (
+                {student?.map((stud: any) => (
                     <Student key={stud.id} name={stud.name} id={stud.id} />
                 ))}
             </article>
-            <AddStudentForm onAddStudent={onAddStudent} />
+            {/* <AddStudentForm onAddStudent={onAddStudent} /> */}
+            {children}
         </section>
     )
 }
