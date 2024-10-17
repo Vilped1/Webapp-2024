@@ -1,4 +1,3 @@
-// import { PropsWithChildren } from "react";
 import { PropsWithChildren } from "react";
 import Student from "./Student"
 import { StudentProps } from "./Types"
