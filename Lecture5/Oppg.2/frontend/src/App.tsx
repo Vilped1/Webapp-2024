@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     const fetchStudent = async () => {
       try{
-        // TODO: No hardcoded url. Move to config in config/index.ts
+        // No hardcoded url. Move to config in config/index.ts
         const response = await fetch("http://localhost:3999/api/students")
         const data = await response.json()
         setStudent(data)
