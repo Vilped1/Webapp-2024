@@ -1,3 +1,5 @@
+// export type Success<T> =
+
 export type Result<T> = 
     | {
         succeess: true,
